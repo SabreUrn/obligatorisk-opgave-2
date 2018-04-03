@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BoxVolumeCalculator;
 
 namespace BoxCalculatorUser {
 	class Program {
-		static Service1 service = new Service1();
+		private static ServiceReference1.Service1Client service = new ServiceReference1.Service1Client();
 
 		static void Main(string[] args) {
 			bool run = true;
