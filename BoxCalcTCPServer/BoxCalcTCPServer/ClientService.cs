@@ -21,7 +21,8 @@ namespace BoxCalcTCPServer {
 					string message = "";
 					try {
 						message = sr.ReadLine();
-						sw.WriteLine(message);
+						double value = InterpretProtocol(message);
+						sw.WriteLine(value);
 					} catch (IOException) {
 						Console.WriteLine("Client connection closed.");
 					}
