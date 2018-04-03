@@ -60,5 +60,15 @@ namespace BoxVolumeCalculator.Tests {
 			//assert
 			Assert.AreEqual(expected, actual);
 		}
+
+		[ExpectedException(typeof(DivideByZeroException))]
+		[TestMethod()]
+		public void GetSideTest_DivideByZero() {
+			//arrange
+			Service1 service = new Service1();
+
+			//act
+			double actual = service.GetSide(5, 0, 0);
+		}
 	}
 }
