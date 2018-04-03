@@ -8,14 +8,13 @@ using System.Threading.Tasks;
 
 namespace BoxCalcTCPServer {
 	public static class ClientService {
-		private static ServiceReference1.Service1Client _service;
+		private static ServiceReference1.Service1Client _service = new ServiceReference1.Service1Client();
 
 		public static void DoClient(TcpClient client) {
 			using (NetworkStream ns = client.GetStream())
 			using (StreamWriter sw = new StreamWriter(ns))
 			using (StreamReader sr = new StreamReader(ns)) {
 				sw.AutoFlush = true;
-				 _service = new ServiceReference1.Service1Client();
 
 				while (true) {
 					string message = "";
@@ -24,7 +23,7 @@ namespace BoxCalcTCPServer {
 						double value = InterpretProtocol(message);
 						sw.WriteLine(value);
 					} catch (IOException) {
-						Console.WriteLine("Client connection closed.");
+						Console.WriteLine("Client disconnected.");
 					}
 				}
 			}

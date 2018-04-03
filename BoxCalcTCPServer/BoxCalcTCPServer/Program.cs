@@ -13,9 +13,11 @@ namespace BoxCalcTCPServer {
 			int port = 24680;
 			TcpListener serverSocket = new TcpListener(ip, port);
 			serverSocket.Start();
+			Console.WriteLine("Server started.");
 
 			while(true) {
 				TcpClient client = serverSocket.AcceptTcpClient();
+				Console.WriteLine("Client connected.");
 				Task.Factory.StartNew(() => ClientService.DoClient(client));
 			}
 		}
